@@ -1062,10 +1062,12 @@ reset_jobserver (void)
 int
 main (int argc, char **argv)
 #else
+#include <copy_environ.h>
 int
-main (int argc, char **argv, char **envp)
+main (int argc, char **argv)
 #endif
 {
+  char **envp = copy_environ();
   static char *stdin_nm = 0;
   int makefile_status = MAKE_SUCCESS;
   struct goaldep *read_files;
